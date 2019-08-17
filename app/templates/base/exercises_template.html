@@ -1,0 +1,23 @@
+
+{% extends 'base/public_template.html' %}
+
+{% block content %}
+
+
+
+    <!-- Illustrations -->
+    <div class="card shadow mb-4" style="margin-left: 5px; margin-right: 5px;">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">
+              {% block card_title %} {% endblock %}
+          </h6>
+        </div>
+        <div class="card-body">
+          <div class="text-center">
+          </div>
+            {% block card_content %} {% endblock %}
+        </div>
+    </div>
+
+
+{% endblock %}

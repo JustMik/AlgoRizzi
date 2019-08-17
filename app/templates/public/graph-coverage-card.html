@@ -1,0 +1,22 @@
+
+{% extends 'base/exercises_template.html' %}
+
+{% block header %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}
+{% block card_title %} First Graph Card {% endblock %}
+{% block card_content %}
+    <style>
+            #mynetwork {
+            height: 500px;
+        }
+            </style>
+
+    <div id = "mynetwork"></div>
+    <script>
+        var n = {{ nodes | safe }};
+        var e = {{ edges | safe }};
+        drawGraph(n, e);
+    </script>
+
+{% endblock %}
