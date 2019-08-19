@@ -10,7 +10,7 @@ from flask_admin.contrib.sqla import ModelView
 from flask_bootstrap import Bootstrap
 from flask_admin.menu import MenuLink
 from app.routes.public import public_route
-from app.routes.security import security_route
+from app.routes.security import flask_security
 from app.routes.handler import handler_route
 
 
@@ -18,7 +18,7 @@ app = Flask(__name__)
 
 #Security
 security = Security()
-security.init_app(app)
+
 
 #Instantiare db
 db = flask_sqlalchemy.SQLAlchemy(app)
@@ -30,9 +30,9 @@ Bootstrap(app)
 #Register Routes Blueprint
 #app.register_blueprint(admin_route)
 app.register_blueprint(public_route)
-app.register_blueprint(security_route)
+app.register_blueprint(flask_security)
 app.register_blueprint(handler_route)
-
+security.init_app(app)
 
 #Administration interface
 admin = Admin(app, name='admin', template_mode='bootstrap3')
