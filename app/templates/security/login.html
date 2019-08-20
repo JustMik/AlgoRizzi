@@ -17,6 +17,7 @@
 
   <!-- Custom styles for this template-->
   <link href="{{ url_for('static', filename='css/sb-admin-2.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/common.css') }}" rel="stylesheet">
 
 </head>
 
@@ -38,22 +39,31 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                   </div>
-                  <form class="user">
+                  <form class="user" method="post">
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                        {{ form.username(id='user', class="form-control form-control-user", placeholder="Insert Username...") }}
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                       {{ form.password(id='pwd', class="form-control form-control-user", placeholder="Insert Password...") }}
                     </div>
                     <div class="form-group">
-                      <div class="custom-control custom-checkbox small">
-                        <input type="checkbox" class="custom-control-input" id="customCheck">
-                        <label class="custom-control-label" for="customCheck">Remember Me</label>
-                      </div>
+                        {% if not current_user.is_authenticated and check_error=='LOGIN_KO' %}
+                            <script>
+                                document.getElementById("user").className="form-control form-control-user form-control-error";
+                                document.getElementById("pwd").className="form-control form-control-user form-control-error";
+                            </script>
+                            {% with messages = get_flashed_messages() %}
+                               {% if messages %}
+                                 <ul class="flashes">
+                                    {% for message in messages %}
+                                     <div class="message_flash">{{ message }}</div>
+                                    {% endfor %}
+                                </ul>
+                              {% endif %}
+                             {% endwith %}
+                        {% endif %}
                     </div>
-                    <a href="/admin" class="btn btn-primary btn-user btn-block">
-                      Login
-                    </a>
+                    <button class="btn btn-primary btn-user btn-block" type="submit">Login</button>
                     <hr>
                   </form>
                   <div class="text-center">

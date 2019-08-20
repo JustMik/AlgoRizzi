@@ -27,3 +27,24 @@
         height: 90%;
     }
 }
+
+.form-control-error {
+    border: 2px solid #f51a05ab;
+}
+
+.message-error {
+    border: 2px solid #f51a05ab;
+}
+
+.message-warning {
+    border: 2px solid #f51a05ab;
+}
+
+.flashes{
+    padding-inline-start: 0px !important;
+}
+
+.message_flash {
+    text-align: center;
+    color: #f51a05ab;
+}

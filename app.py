@@ -1,6 +1,6 @@
-from app import app
+import app as app
 
-app.run(debug=True)
+app.create_app().run(debug=True)
 
 
 
