@@ -2,6 +2,8 @@ from flask import Blueprint, render_template, session,abort
 
 public_route = Blueprint('public',__name__, url_prefix='/public')
 
+
+
 @public_route.route('/')
 def public():
     return render_template('public/index.html')

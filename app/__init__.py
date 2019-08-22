@@ -1,4 +1,5 @@
-from flask import Flask, url_for, redirect
+import os
+from flask import Flask, url_for, redirect, send_from_directory
 from flask_admin import Admin
 import flask_sqlalchemy
 import app.config as Configuration
@@ -27,7 +28,6 @@ def create_app():
         Init Login
     '''
     login.init_app(app)
-
     '''
         Configuring App
     '''
@@ -59,6 +59,10 @@ def create_app():
     @app.route('/')
     def index():
         return redirect(url_for('public.public'))
+
+    @app.route('/favicon.ico')
+    def favicon():
+        return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
     '''
         Return Configured App

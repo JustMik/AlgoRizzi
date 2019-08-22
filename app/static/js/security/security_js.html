@@ -1,0 +1,58 @@
+
+<script>
+
+    if ('{{ login }}' == 'LOGIN'){
+        $("#myModal").modal();
+    }
+
+    document.getElementById('idUsername').validity.valid
+    document.getElementById('idPassword').validity.valid
+
+    $(document).ready(function(){
+      $("#idLogin").click(function(){
+        if ('{{ current_user.is_authenticated }}'=='True') {
+            window.location.href = '{{ url_for("admin.index") }}'
+        }
+        else {
+            $("#myModal").modal();
+        }
+      });
+    });
+
+    $('#idSubmit').click(function() {
+
+        if ($('#idUsername').val()=='' || $('#idPassword').val()=='' ) {
+            $("#idUsername").attr('class', 'form-control form-control-user form-control-warning');
+            $("#idPassword").attr('class', 'form-control form-control-user form-control-warning');
+            $("#idDataRequired").attr('style', 'display: "";')
+            $("#idAuthFailed").attr('style', 'display: none;')
+        }
+        else {
+            $.ajax({
+                url: '/signin/',
+                type: "POST",
+                dataType: 'json',
+                data: {
+                    username: $('#idUsername').val(),
+                    password: $('#idPassword').val()
+                },
+                success: function (data) {
+                    if (data['check_error']=='OK'){
+                          window.location.href = '{{ url_for("admin.index") }}'
+                    }
+                },
+                fail: function (data) {
+                    console.log(data);
+                },
+                error: function (a, b, c) {
+                    $("#idUsername").attr('class', 'form-control form-control-user form-control-error');
+                    $("#idPassword").attr('class', 'form-control form-control-user form-control-error');
+                    $("#idDataRequired").attr('style', 'display: none;')
+                    $("#idAuthFailed").attr('style', 'display: "";')
+                    console.log(a.responseJSON);
+                },
+            })
+        }
+    });
+
+</script>

@@ -32,19 +32,27 @@
     border: 2px solid #f51a05ab;
 }
 
+.form-control-warning {
+    border: 2px solid #f6c23e;
+}
+
 .message-error {
     border: 2px solid #f51a05ab;
 }
 
 .message-warning {
-    border: 2px solid #f51a05ab;
+    border: 2px solid #f6c23e;
 }
 
 .flashes{
     padding-inline-start: 0px !important;
 }
 
-.message_flash {
+.message-flash-error {
     text-align: center;
     color: #f51a05ab;
+}
+
+.message-flash-warning {
+    text-align: center;
 }

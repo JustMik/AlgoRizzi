@@ -21,3 +21,4 @@ def config(app):
         session.permanent = True
         app.permanent_session_lifetime = timedelta(seconds=SESSION_TIMEOUT)
 
+
