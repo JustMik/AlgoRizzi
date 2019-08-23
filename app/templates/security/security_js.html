@@ -6,11 +6,21 @@
         $("#idLoginModal").modal();
     }
 
+    $(document).keydown(function(e){
+        if (e.keyCode==13 && $('#idLoginModal').is('.show'))
+            $('#idSubmit').click();
+    });
+
     // Clear Login Field on Hidden Modal
     $( document ).ready(function() {
+
         $('#idLoginModal').on("hidden.bs.modal", function () {
             $('#idUsername').val("");
             $('#idPassword').val("");
+            $("#idUsername").attr('class', 'form-control form-control-user');
+            $("#idPassword").attr('class', 'form-control form-control-user');
+            $("#idDataRequired").attr('style', 'display: none;')
+            $("#idAuthFailed").attr('style', 'display: none;')
         });
 
         // Open Login Modal or redirect to 'admin' if already

@@ -56,3 +56,8 @@
 .message-flash-warning {
     text-align: center;
 }
+
+.ad-content {
+    padding-left: 0px;
+    padding-right: 0px;
+}
