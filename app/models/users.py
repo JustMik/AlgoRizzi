@@ -1,5 +1,4 @@
 from sqlalchemy import Column, Integer, String
-from app.database import Base
 from flask_login import UserMixin
 from app import login, db
 
@@ -17,7 +16,7 @@ class User(UserMixin, db.Model):
         self.role = role
 
     def __repr__(self):
-        return  self.username
+        return self.username
 
 
     @login.user_loader
