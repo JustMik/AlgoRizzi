@@ -5,8 +5,44 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">AlgoRizzi <sup>1.0</sup></h1>
+            <h1 class="h3 mb-0 text-gray-800">News</h1>
           </div>
+
+
+        {% for post in posts %}
+
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">
+                      {{ post.title }}
+                  </h6>
+                </div>
+                <div class="card-body">
+                    {{ post.body }}
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-xl-4">
+                            Data Creazione: {{ post.created_at }}
+                        </div>
+                        <div class="col-xl-4">
+                            {% if post.last_edit %}
+                                Ultima Modifica: {{ post.last_edit }}
+                            {% endif %}
+                        </div>
+                        <div class="col-xl-4 text-right">
+                            {% if post.author_id %}
+                                Autore: <strong>{{ post.author_id }}</strong>
+                            {% else %}
+                                Autore: <strong>Anonimo</strong>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        {% endfor %}
+
 
 {% endblock %}
 

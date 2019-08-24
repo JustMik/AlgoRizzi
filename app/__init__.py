@@ -58,9 +58,9 @@ def create_app():
     '''
         Markdown
     '''
-    from flask_misaka import Misaka
-    markdown = Misaka()
-    markdown.init_app(app)
+    #from flask_misaka import Misaka
+    #markdown = Misaka()
+    #markdown.init_app(app)
 
     '''
         Redirect '/' to '/public'

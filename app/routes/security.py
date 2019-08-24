@@ -24,7 +24,10 @@ def signin():
     if user is None:
         flash('Invalid username or password')
         return jsonify(check_error='LOGIN_KO'), 401
-    login_user(user)
+    if user.role != 'ADMIN':
+        login_user(user)
+        return jsonify(check_error='LOGIN_KO'), 401
+
     return jsonify(check_error='OK')
 
 
