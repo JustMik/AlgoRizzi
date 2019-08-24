@@ -20,15 +20,16 @@ def signin():
         return jsonify(check_error=''), 400
 
     user = User.query.filter_by(username=username, password=password).first()
-
+    print(user.role)
     if user is None:
         flash('Invalid username or password')
         return jsonify(check_error='LOGIN_KO'), 401
-    if user.role != 'ADMIN':
+    if user.role == 'ADMIN':
         login_user(user)
-        return jsonify(check_error='LOGIN_KO'), 401
+        return jsonify(check_error='OK')
 
-    return jsonify(check_error='OK')
+    return jsonify(check_error='LOGIN_KO'), 401
+
 
 
 @flask_security.route('/login/', methods=['GET', 'POST'])

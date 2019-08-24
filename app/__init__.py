@@ -62,6 +62,10 @@ def create_app():
     #markdown = Misaka()
     #markdown.init_app(app)
 
+    @app.template_filter('strftime')
+    def _jinja2_filter_datetime(date):
+        return date.strftime('%H:%M - %d/%m/%Y')
+
     '''
         Redirect '/' to '/public'
     '''

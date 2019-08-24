@@ -18,16 +18,16 @@
                   </h6>
                 </div>
                 <div class="card-body">
-                    {{ post.body }}
+                    {{ post.body | safe }}
                 </div>
                 <div class="card-footer">
                     <div class="row">
                         <div class="col-xl-4">
-                            Data Creazione: {{ post.created_at }}
+                            Data Creazione:  {{ post.created_at | strftime }}
                         </div>
                         <div class="col-xl-4">
                             {% if post.last_edit %}
-                                Ultima Modifica: {{ post.last_edit }}
+                                Ultima Modifica:  {{ post.last_edit | strftime }}
                             {% endif %}
                         </div>
                         <div class="col-xl-4 text-right">
