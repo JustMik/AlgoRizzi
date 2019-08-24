@@ -3,7 +3,7 @@ from flask_bootstrap import Bootstrap
 from flask import session
 from datetime import timedelta
 
-SESSION_TIMEOUT = 10
+SESSION_TIMEOUT = 1000
 ADMIN_TEMPLATE = 'cerulean'
 DB_URL = 'postgresql+psycopg2://admin:admin@localhost:5432/dbrizzi'
 SECRET_KEY = 'super secret key'

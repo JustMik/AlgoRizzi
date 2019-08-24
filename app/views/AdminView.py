@@ -10,3 +10,6 @@ class AdminView(AdminIndexView):
     def index(self):
         return self.render('/admin/index.html')
 
+    @expose('/post')
+    def post(self):
+        return self.render('/admin/post.html')
