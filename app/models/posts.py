@@ -11,3 +11,4 @@ class Post(db.Model):
     created_at = Column(DateTime, index=True, default=datetime.utcnow)
     last_edit = Column(DateTime, index=True, onupdate=datetime.utcnow, default=datetime.utcnow)
     author_id = Column(Integer, db.ForeignKey('users.id'))
+    user = db.relationship('User', backref='posts')

@@ -4,6 +4,9 @@
 {% block header %}
     <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
 {% endblock %}
+{% block description %}
+    Descrizione del problema! Probabilmente da recuperare la DB per maggior flessibilità nella modifica della stessa.
+{% endblock %}
 {% block card_title %} First Graph Card {% endblock %}
 {% block card_content %}
     <style>
@@ -16,7 +19,8 @@
     <script>
         var n = {{ nodes | safe }};
         var e = {{ edges | safe }};
-        drawGraph(n, e);
+        var network = drawGraph(n, e);
+
     </script>
 
 {% endblock %}

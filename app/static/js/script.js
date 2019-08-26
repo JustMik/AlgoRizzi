@@ -32,14 +32,18 @@ function drawGraph(nodes, edges) {
             }
         },
         "interaction": {
+            "zoomView": false,
+            "selectConnectedEdges": false,
+            "multiselect": true,
             "dragNodes": true,
             "hideEdgesOnDrag": false,
-            "hideNodesOnDrag": false
+            "hideNodesOnDrag": false,
+            "multiselect": true
         },
         "physics": {
-            "enabled": true,
+            "enabled": false,
             "stabilization": {
-                "enabled": true,
+                "enabled": false,
                 "fit": true,
                 "iterations": 1000,
                 "onlyDynamicEdges": false,
@@ -56,6 +60,24 @@ function drawGraph(nodes, edges) {
     
 
     network = new vis.Network(container, data, options);
+
+    network.on( 'click', function(properties) {
+            var nodeIds = properties.nodes;
+            var clickedNode = nodes.get(nodeIds);
+            console.log(clickedNode)
+            if (clickedNode !== "null" && clickedNode !== "undefined" && Object.keys(clickedNode).length != 0) {
+                console.log("Hai clikato il nodo ", clickedNode[0].label)
+            }
+
+            var edgeIds = properties.edges;
+            var clickedEdge = edges.get(edgeIds);
+            if (clickedEdge !== "null" &&
+                clickedEdge !== "undefined" &&
+                Object.keys(clickedEdge).length != 0 &&
+                Object.keys(clickedNode).length == 0) {
+                    console.log("Hai clikato l'arco ", clickedEdge[0].from, " -> ", clickedEdge[0].to )
+            }
+        });
 
     return network;
 

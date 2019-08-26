@@ -8,7 +8,6 @@ class User(UserMixin, db.Model):
     username = Column(String(50), unique=True)
     password = Column(String(120), unique=True)
     role = Column(String(20))
-    post = db.relationship('Post', backref='author', lazy='dynamic')
 
     def __init__(self, username=None, password=None, role=None):
         self.username = username

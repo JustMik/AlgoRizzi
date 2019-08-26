@@ -3,9 +3,21 @@
 
 {% block content %}
 
+    <!-- Description accordion -->
+    <div class="card shadow mb-4" style="margin-left: 5px; margin-right: 5px;">
+        <a role="button" href="#exDescription" class="card-header py-3" data-toggle="collapse" data-target="#exDescription" aria-expanded="false" aria-controls="exDescription">
+          <h6 class="m-0 font-weight-bold text-primary">
+            Description
+          </h6>
+        </a>
+        <div id="exDescription" class="collapse">
+            <div  class="card-body">
+                {% block description %} {% endblock %}
+            </div>
+        </div>
+    </div>
 
-
-    <!-- Illustrations -->
+    <!-- Content section -->
     <div class="card shadow mb-4" style="margin-left: 5px; margin-right: 5px;">
         <div class="card-header py-3">
           <h6 class="m-0 font-weight-bold text-primary">
@@ -13,8 +25,6 @@
           </h6>
         </div>
         <div class="card-body">
-          <div class="text-center">
-          </div>
             {% block card_content %} {% endblock %}
         </div>
     </div>
